@@ -12,6 +12,7 @@ const imageUp = require('../middlewares/imageUp');
 router.get('/ping', TestController.Ping);
 
 router.post('/user', UserControllers.Create);
+router.post('/login', UserControllers.Login);
 // Cadastro Usuario
 // Login Usuario
 
