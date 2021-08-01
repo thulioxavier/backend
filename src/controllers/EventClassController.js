@@ -97,5 +97,42 @@ module.exports = {
         });
 
         res.json(json);
-    }
+    },
+
+    SelectByEventId: async (req, res) => {
+        let json = { error: {}, result: [], status: {} };
+
+        let values = {};
+        values.id = req.params.id_event;
+
+        await EventClass.selectByEventId(values).then(results => {
+
+            for (let i in results) {
+                json.result.push({
+                    id: results[i].id,
+                    title: results[i].title,
+                    price: results[i].price,
+                    limit: results[i].limit,
+                    status: results[i].status,
+                });
+            }
+
+            json.status = {
+                status: 200,
+                error: '',
+                msg: 'A requisição foi bem sucedida.'
+            }
+            return results;
+        }).catch(reject => {
+            json.status = {
+                status: 400,
+                error: '',
+                msg: 'A requisição não pode ser concluid.'
+            }
+            console.log(reject);
+            return;
+        });
+
+        res.json(json);
+    },
 }

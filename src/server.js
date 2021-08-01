@@ -7,8 +7,10 @@ const router = require('./routers/router');
 
 const server = express();
 server.use(cors());
-server.use(bodyParser.urlencoded({extended: false}));
-server.use(express.urlencoded({extended: false}));
+server.use(bodyParser.urlencoded({extended: true}));
+server.use(express.urlencoded({extended: true}));
+server.use(bodyParser.json());
+server.use(express.json());
 server.use('/static',express.static('./src/temp'))
 server.use('/api', router);
 

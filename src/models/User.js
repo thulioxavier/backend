@@ -3,8 +3,8 @@ const db = require('../database/connection');
 module.exports = {
     create: async ({name, email, phone, password, identity, token}) => {
         return new Promise((resolver, reject) => {
-            let query = 'INSERT INTO users (`name`, `email`, `phone`, `password`, `identity`) VALUES (?,?,?,?,?)';
-            let values = [name, email, phone, password, identity];
+            let query = 'INSERT INTO users (`name`, `email`, `phone`, `password`, `identity`, `token`) VALUES (?,?,?,?,?,?)';
+            let values = [name, email, phone, password, identity, token];
             db.query(query, values,(error, results) => {
                     if (error) { reject(error); return; }
                     console.log(results);

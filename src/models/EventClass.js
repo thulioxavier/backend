@@ -25,7 +25,6 @@ module.exports = {
     },
 
     delete: ({ id }) => {
-        console.log(id);
         return new Promise((resolver, reject) => {
             let query = 'DELETE FROM event_class WHERE id = ?';
             let values = [id];
@@ -34,5 +33,17 @@ module.exports = {
                 resolver(row);
             })
         });
-    }
+    },
+
+    selectByEventId: ({id}) => {
+        console.log(id);
+        return new Promise((resolver, reject )=> {
+            let query = 'SELECT * FROM event_class WHERE id_event = ?';
+            let values = [id];
+            db.query(query, values, (err, row) => {
+                if (err) { reject(err) }
+                resolver(row);
+            })
+        });
+    },
 }

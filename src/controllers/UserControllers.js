@@ -43,7 +43,7 @@ module.exports = {
     Create: async (req, res) => {
         let json = { error: '', result: {} };
         let { name, email, password, phone } = req.body;
-
+        console.log(req.body);
         let values = {
             name: name,
             email: email,
@@ -51,6 +51,8 @@ module.exports = {
             phone: phone,
             identity: uniqId(`${phone}-`)
         };
+
+        console.log(name, email, password, phone);
 
         try {
 

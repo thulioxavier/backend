@@ -119,5 +119,38 @@ module.exports = {
 
         res.json(json);
     },
+
+    SelectById: async (req, res) => {
+        let json = { error: {}, result: [], status: {} };
+
+        let {id} = req.params;
+
+        await Event.selectById(id).then(results => {
+
+            console.log(results);
+            for (let i in results) {
+                json.result.push({
+                    id: results[i].id,
+                    title: results[i].title,
+                    description: results[i].description,
+                    banner: results[i].banner,
+                    type: results[i].type,
+                });
+            }
+
+            json.status = {
+                status: 200,
+                error: '',
+                msg: 'A requisição foi bem sucedida.'
+            }
+            return results;
+        }).catch(error => {
+            json.error = 'Não foi possivel execultar essa solicitação!'
+            console.log(error);
+            return;
+        });
+
+        res.json(json);
+    },
     
 }

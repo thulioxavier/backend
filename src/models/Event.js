@@ -42,8 +42,17 @@ module.exports = {
                 resolver(row);
             })
         });
+    },
+
+    selectById: (id) => {
+        return new Promise((resolver, reject) => {
+            let query = 'SELECT * FROM events WHERE id = ?';
+            values = [id];
+            db.query(query, values, (err, row) => {
+                if (err) { reject(err); }
+                resolver(row);
+            })
+        });
     }
-
-
 
 }
