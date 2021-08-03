@@ -8,7 +8,8 @@ module.exports = {
             title,
             description,
             banner,
-            type
+            type,
+            status,
         } = req.body;
 
         var event = await Event.create(values).then(insertId => {

@@ -1,9 +1,9 @@
 const db = require('../database/connection');
 module.exports = {
-    create: ({ title, description, banner, type }) => {
+    create: ({ title, description, banner, type, status }) => {
         return new Promise((resolver, reject) => {
-            let query = 'INSERT INTO events (`title`, `description`,  `banner`, `type`) VALUES ( ?,?,?,?)';
-            let values = [title, description, banner, type];
+            let query = 'INSERT INTO events (`title`, `description`,  `banner`, `type`, `status`) VALUES ( ?,?,?,?,?)';
+            let values = [title, description, banner, type, status];
             db.query(query, values, (err, row) => {
                 if (err) { reject(err); }
                 resolver(row);

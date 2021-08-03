@@ -2,6 +2,8 @@ const express = require('express');
 const CategoryController = require('../controllers/CategoryController');
 const EventClassController = require('../controllers/EventClassController');
 const EventController = require('../controllers/EventController');
+const SponsorsControllers = require('../controllers/SponsorsControllers');
+
 const router = express.Router();
 
 const TestController = require('../controllers/TestController');
@@ -30,4 +32,7 @@ router.post('/event_class', EventClassController.Create);
 router.delete('/event_class/:id', EventClassController.Delete);
 router.put('/event_class/:id_class', EventClassController.Update);
 router.get('/event_class/:id_event', EventClassController.SelectByEventId);
+
+//Sponsors 
+router.post('/sponsors', SponsorsControllers.creteSponsors);
 module.exports = router;
