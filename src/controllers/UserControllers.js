@@ -16,13 +16,14 @@ module.exports = {
 
             if (!byUser.length > 0) {
                 json.error = 'E-mail e/ou senha errados!';
+                res.json(json);
             }
             //validando senha
-
             const match = await bcrypt.compare(values.password, byUser[0].password);
 
             if(!match){
                 json.error = 'E-mail e/ou senha errados!';
+                res.json(json);
             }
 
             //gerando token

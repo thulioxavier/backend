@@ -2,6 +2,7 @@ const Sponsors = require('../models/Sponsors');
 
 module.exports = {
     creteSponsors: async(req, res) => {
+        
         let json = { error: {}, result: {}, status: {} };
 
         const values = {
@@ -21,7 +22,9 @@ module.exports = {
             return
 
         });
+    },
 
-
+    getSponsors: async (req, res) => {
+        let json = { error: {}, result: {}, status: {} };
     }
 }
